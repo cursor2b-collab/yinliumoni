@@ -1,0 +1,384 @@
+/* 管理后台专用样式 - 深色主题 */
+
+/* 管理后台全屏：无白边、整页深色 */
+html:has(.admin-root),
+body:has(.admin-root) {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  background: #141414;
+}
+body:has(.admin-root) #root {
+  min-height: 100vh;
+}
+
+/* 变量 - 深色主题 */
+.admin-root {
+  --admin-bg: #141414;
+  --admin-sidebar-bg: #0d0d0d;
+  --admin-sidebar-text: rgba(255, 255, 255, 0.85);
+  --admin-sidebar-active: #1890ff;
+  --admin-header-bg: #1f1f1f;
+  --admin-header-border: #303030;
+  --admin-card-bg: #1f1f1f;
+  --admin-card-border: #303030;
+  --admin-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --admin-card-radius: 12px;
+  --admin-primary: #1890ff;
+  --admin-primary-hover: #40a9ff;
+  --admin-text: rgba(255, 255, 255, 0.9);
+  --admin-text-secondary: rgba(255, 255, 255, 0.55);
+  --admin-border: #434343;
+}
+
+/* 整体布局 - 全屏、电脑端最小宽度 */
+.admin-root {
+  width: 100%;
+  min-width: 1280px;
+  min-height: 100vh;
+  background: var(--admin-bg);
+  display: flex;
+  font-size: 14px;
+  color: var(--admin-text);
+  line-height: 1.5715;
+  box-sizing: border-box;
+}
+
+/* 左侧边栏 */
+.admin-sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--admin-sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width 0.2s, min-width 0.2s;
+}
+.admin-sidebar.collapsed {
+  width: 64px;
+  min-width: 64px;
+}
+
+.admin-sidebar-header {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.admin-sidebar-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.admin-sidebar-toggle {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admin-sidebar-text);
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.admin-sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+.admin-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  margin: 0 8px 4px;
+  color: var(--admin-sidebar-text);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.admin-sidebar-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.admin-sidebar-nav a.active {
+  background: var(--admin-sidebar-active);
+  color: #fff;
+}
+.admin-sidebar-nav a svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.admin-sidebar.collapsed .admin-sidebar-nav a span {
+  display: none;
+}
+.admin-sidebar.collapsed .admin-sidebar-nav a {
+  justify-content: center;
+  padding: 0;
+}
+
+/* 主内容区 */
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-header {
+  height: 56px;
+  padding: 0 24px;
+  background: var(--admin-header-bg);
+  border-bottom: 1px solid var(--admin-header-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.admin-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.admin-content-wrap {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+}
+.admin-content-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--admin-card-bg);
+  border-radius: var(--admin-card-radius);
+  border: 1px solid var(--admin-card-border);
+  box-shadow: var(--admin-card-shadow);
+  padding: 24px;
+  min-height: 280px;
+}
+
+/* 内容页通用 */
+.admin-page-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.admin-page-desc {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--admin-text-secondary);
+}
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.admin-card {
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-card-border);
+  border-radius: var(--admin-card-radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: var(--admin-card-shadow);
+}
+.admin-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--admin-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.admin-card-body {
+  padding: 20px;
+}
+.admin-form-group {
+  margin-bottom: 20px;
+}
+.admin-form-group:last-child {
+  margin-bottom: 0;
+}
+.admin-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--admin-text);
+}
+.admin-form-input {
+  width: 100%;
+  height: 36px;
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 1.5715;
+  color: var(--admin-text);
+  background: #141414;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.admin-form-input:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.25);
+}
+.admin-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.admin-btn {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.admin-btn-primary {
+  background: var(--admin-primary);
+  color: #fff;
+}
+.admin-btn-primary:hover:not(:disabled) {
+  background: var(--admin-primary-hover);
+}
+.admin-btn-default {
+  background: #262626;
+  color: var(--admin-text);
+  border: 1px solid var(--admin-border);
+}
+.admin-btn-default:hover:not(:disabled) {
+  color: var(--admin-primary);
+  border-color: var(--admin-primary);
+  background: #363636;
+}
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.admin-btn-sm {
+  height: 28px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 28px;
+}
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.admin-table-wrap {
+  overflow-x: auto;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--admin-card-border);
+}
+.admin-table th {
+  font-weight: 600;
+  color: var(--admin-text);
+  background: #262626;
+}
+.admin-table tr:hover td {
+  background: #262626;
+}
+.admin-alert-error {
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #ff7875;
+  background: rgba(255, 77, 79, 0.15);
+  border: 1px solid #ff4d4f;
+  border-radius: 6px;
+}
+.admin-help-text {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--admin-text-secondary);
+  text-align: center;
+}
+
+/* 管理后台弹窗深色样式（弹窗渲染在 body 下，需单独设置） */
+.admin-dialog-content {
+  --admin-text: rgba(255, 255, 255, 0.9);
+  --admin-text-secondary: rgba(255, 255, 255, 0.55);
+  --admin-border: #434343;
+  --admin-card-bg: #1f1f1f;
+  background: #1f1f1f !important;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #303030 !important;
+}
+.admin-dialog-content .admin-form-label,
+.admin-dialog-content .admin-form-input {
+  color: rgba(255, 255, 255, 0.9);
+}
+.admin-dialog-content .admin-form-input {
+  background: #141414;
+  border-color: #434343;
+}
+.admin-dialog-content .admin-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.admin-dialog-content [data-slot="dialog-title"] {
+  color: rgba(255, 255, 255, 0.9);
+}
+/* 关闭按钮：固定为卡片右上角小图标，不占整行 */
+.admin-dialog-content {
+  position: relative;
+}
+.admin-dialog-content > button[class*="absolute"] {
+  right: 16px !important;
+  top: 16px !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 6px;
+}
+.admin-dialog-content > button[class*="absolute"]:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 0.08);
+}
