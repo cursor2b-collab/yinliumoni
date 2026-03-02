@@ -7,8 +7,19 @@ export default function ContactPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white flex flex-col pb-20">
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 h-12 flex items-center justify-between flex-shrink-0">
+    <div
+      className="bg-white flex flex-col"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        width: '100vw',
+        height: '100vh',
+        maxWidth: 'none',
+        margin: 0,
+        padding: 0,
+      }}
+    >
+      <div className="flex-shrink-0 z-50 bg-white border-b border-gray-200 px-4 h-12 flex items-center justify-between">
         <h1 className="text-gray-800 font-semibold">在线客服</h1>
         <button
           type="button"
@@ -21,8 +32,14 @@ export default function ContactPage() {
       </div>
       <iframe
         src="https://kefuim.vercel.app/"
-        className="flex-1 w-full min-h-0 border-0"
         title="客服页面"
+        style={{
+          flex: 1,
+          width: '100%',
+          minHeight: 0,
+          border: 'none',
+          display: 'block',
+        }}
       />
       <BottomNav currentPage="contact" />
     </div>
