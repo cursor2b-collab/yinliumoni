@@ -1310,7 +1310,7 @@ span.red {
 }
 
 img.start_img {
-  z-index: 999;
+  z-index: 1;
   width: 80px;
 }
 
@@ -1926,7 +1926,7 @@ html {
 }
 
 .rtop_img {
-  z-index: 999;
+  z-index: 1;
   width: 34px;
   position: absolute;
   top: 0;
@@ -1951,7 +1951,7 @@ html {
 
 .game_name {
   color: #1f285a;
-  z-index: 999;
+  z-index: 1;
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
@@ -1963,7 +1963,7 @@ html {
 
 .gameText {
   color: #6478b1;
-  z-index: 999;
+  z-index: 1;
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
@@ -1976,7 +1976,7 @@ html {
 }
 
 .start_img {
-  z-index: 999;
+  z-index: 1;
   width: 80px;
 }
 
@@ -1994,8 +1994,64 @@ html {
 }
 
 .start_img_game {
-  z-index: 999;
+  z-index: 1;
   width: 80px;
+}
+
+/* 进入游戏 CSS 按钮（替代原图片） */
+.btn-enter-game {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.5rem 1.25rem;
+  background-color: rgb(0 107 179);
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.btn-enter-game::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 100%;
+  top: 0;
+  left: -80px;
+  opacity: 0.6;
+  background-image: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.8),
+    transparent 70%
+  );
+}
+.btn-enter-game:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.btn-enter-game:hover::before {
+  animation: btn-enter-game-shine 1.5s ease-out infinite;
+}
+@keyframes btn-enter-game-shine {
+  0% { left: -80px; }
+  60% { left: 100%; }
+  100% { left: 100%; }
+}
+.btn-enter-game__icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+.btn-enter-game:hover .btn-enter-game__icon {
+  transform: translate(4px, 0);
 }
 
 .activity_card {
