@@ -222,7 +222,7 @@ const HomePage = () => {
           {activities.length > 0 && (
             <div style={{ padding: '10px 10px 0' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px' }}>
-                {activities.slice(0, 3).map((act, idx) => (
+                {activities.map((act, idx) => (
                   <MiniGameCard
                     key={act.id}
                     id={act.id}
@@ -231,18 +231,6 @@ const HomePage = () => {
                     description={act.subtitle}
                     link={act.link}
                     colorIdx={idx + 4}
-                  />
-                ))}
-                <div key="_first-row-gap" style={{ gridColumn: '4' }} aria-hidden="true" />
-                {activities.slice(3).map((act, idx) => (
-                  <MiniGameCard
-                    key={act.id}
-                    id={act.id}
-                    icon={act.icon_url}
-                    name={act.title}
-                    description={act.subtitle}
-                    link={act.link}
-                    colorIdx={idx + 7}
                   />
                 ))}
               </div>
