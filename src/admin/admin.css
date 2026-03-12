@@ -1,16 +1,31 @@
-/* 管理后台专用样式 - 深色主题 */
+/* 管理后台专用样式 - 深色主题、全屏布局 */
 
-/* 管理后台全屏：无白边、整页深色 */
-html:has(.admin-root),
+/* 管理后台全屏：占满视口、无白边、整页深色 */
+html:has(.admin-root) {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #141414;
+}
 body:has(.admin-root) {
   margin: 0;
   padding: 0;
+  width: 100%;
   height: 100%;
   min-height: 100vh;
+  overflow: hidden;
   background: #141414;
 }
+/* 覆盖 index.css 里 #root 的 max-width:430px + margin:0 auto，避免管理后台被居中缩窄 */
 body:has(.admin-root) #root {
-  min-height: 100vh;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  overflow: hidden;
 }
 
 /* 变量 - 深色主题 */
@@ -32,10 +47,11 @@ body:has(.admin-root) #root {
   --admin-border: #434343;
 }
 
-/* 整体布局 - 全屏、电脑端最小宽度 */
+/* 整体布局 - 全屏占满视口 */
 .admin-root {
   width: 100%;
-  min-width: 1280px;
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
   background: var(--admin-bg);
   display: flex;
@@ -43,6 +59,7 @@ body:has(.admin-root) #root {
   color: var(--admin-text);
   line-height: 1.5715;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* 左侧边栏 */
@@ -160,10 +177,15 @@ body:has(.admin-root) #root {
   flex: 1;
   overflow: auto;
   padding: 24px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .admin-content-box {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  flex: 1;
+  margin: 0;
   background: var(--admin-card-bg);
   border-radius: var(--admin-card-radius);
   border: 1px solid var(--admin-card-border);

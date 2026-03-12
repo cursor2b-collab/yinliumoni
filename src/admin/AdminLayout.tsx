@@ -9,6 +9,8 @@ import {
   Wrench,
   Navigation,
   Type,
+  MessageSquare,
+  FileText,
   PanelLeftClose,
   PanelLeft,
   LogOut,
@@ -19,12 +21,15 @@ import './admin.css';
 const menuItems = [
   { path: '/admin', end: true, label: '概览', icon: LayoutDashboard },
   { path: '/admin/carousel', label: '首页轮播图', icon: Image },
+  { path: '/admin/home-copy', label: '首页文案', icon: FileText },
   { path: '/admin/my-sites', label: '我的网站', icon: Link2 },
   { path: '/admin/games', label: '游戏卡片', icon: Gamepad2 },
   { path: '/admin/activities', label: '特色活动', icon: Sparkles },
+  { path: '/admin/adult-items', label: '成人影片', icon: Image },
   { path: '/admin/tools', label: '工具页', icon: Wrench },
   { path: '/admin/bottom-nav', label: '底部导航', icon: Navigation },
   { path: '/admin/page-titles', label: '页面标题', icon: Type },
+  { path: '/admin/announcement', label: '公告弹窗', icon: MessageSquare },
 ];
 
 export default function AdminLayout() {

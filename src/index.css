@@ -2275,6 +2275,34 @@ a.btn-enter-game {
   display: inline-block;
 }
 
+/* 游戏卡片标题与彩虹渐变文字 */
+.tjitem .app-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.tjitem .app-title.tjitem-gradient {
+  margin: 0;
+  background: linear-gradient(to right, #ffffff, #ff0000 6.25%, #ff7d00 12.5%, #ffff00 18.75%, #00ff00 25%, #00ffff 31.25%, #0000ff 37.5%, #ff00ff 43.75%, #ffff00 50%, #ff0000 56.25%, #ff7d00 62.5%, #ffff00 68.75%, #00ff00 75%, #00ffff 81.25%, #0000ff 87.5%, #ff00ff 93.75%, #ffff00 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: masked-animation 2s infinite linear;
+}
+@keyframes masked-animation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* 顶部两侧装饰图悬浮动画 */
+@keyframes float-sway {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-deco {
+  animation: float-sway 2.5s ease-in-out infinite;
+}
+
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -2483,4 +2511,22 @@ a.btn-enter-game {
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+
+/* ── PC 端手机居中布局 ── */
+html, body {
+  background-color: #b8c2d8;
+  background-image:
+    radial-gradient(ellipse at 15% 40%, #a0aece 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 60%, #c4cfe4 0%, transparent 60%);
+}
+
+#root {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #eef0fa;
+  position: relative;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0,0,0,0.06);
+  isolation: isolate;
 }

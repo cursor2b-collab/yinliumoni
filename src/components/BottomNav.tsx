@@ -32,7 +32,7 @@ export function BottomNav({ currentPage = 'home' }: BottomNavProps) {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[1000] border-t border-gray-200 bg-white px-2 py-2 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] [background-color:#ffffff]">
+    <nav className="fixed bottom-0 z-[1000] border-t border-gray-200 bg-white px-2 py-2 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] [background-color:#ffffff]" style={{ left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '430px' }}>
       <div className="flex items-center justify-around mx-auto">
         {navItems.map(({ id, icon_default: iconDefault, icon_active: iconActive, label, route_path: routePath }) => (
           <button

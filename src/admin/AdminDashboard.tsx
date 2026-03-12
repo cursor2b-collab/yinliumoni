@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Image, Link2, Gamepad2, Sparkles, Wrench, Navigation, Type } from 'lucide-react';
+import { Image, Link2, Gamepad2, Sparkles, Wrench, Navigation, Type, MessageSquare, FileText } from 'lucide-react';
 
 const cards = [
   { to: '/admin/carousel', label: '首页轮播图', icon: Image },
+  { to: '/admin/home-copy', label: '首页文案', icon: FileText },
   { to: '/admin/my-sites', label: '我的网站', icon: Link2 },
   { to: '/admin/games', label: '游戏卡片', icon: Gamepad2 },
   { to: '/admin/activities', label: '特色活动', icon: Sparkles },
+  { to: '/admin/adult-items', label: '成人影片', icon: Image },
   { to: '/admin/tools', label: '工具页', icon: Wrench },
   { to: '/admin/bottom-nav', label: '底部导航', icon: Navigation },
   { to: '/admin/page-titles', label: '页面标题', icon: Type },
+  { to: '/admin/announcement', label: '公告弹窗', icon: MessageSquare },
 ];
 
 export default function AdminDashboard() {

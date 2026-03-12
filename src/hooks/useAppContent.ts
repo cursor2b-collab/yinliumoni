@@ -8,6 +8,7 @@ import type {
   ToolCardRow,
   BottomNavRow,
   ActivityRow,
+  AdultItemRow,
 } from '../lib/supabase';
 
 export type AppContent = {
@@ -16,6 +17,7 @@ export type AppContent = {
   games: GameRow[];
   toolSections: (ToolSectionRow & { cards: ToolCardRow[] })[];
   activities: ActivityRow[];
+  adultItems: AdultItemRow[];
   bottomNav: BottomNavRow[];
   pageSettings: Record<string, string>;
 };
@@ -133,12 +135,31 @@ const defaultActivities: ActivityRow[] = [
   { id: '6', title: 'JL模拟器', subtitle: '限时开放', icon_url: 'https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?auto=format&fit=crop&q=80&w=200', link: null, sort_order: 5 },
 ];
 
+const defaultAdultItems: AdultItemRow[] = [
+  { id: '1', name: '君临国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 0 },
+  { id: '2', name: '胜天国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 1 },
+  { id: '3', name: '新时代', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 2 },
+  { id: '4', name: '星耀国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 3 },
+  { id: '5', name: '逐梦国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 4 },
+  { id: '6', name: '巅峰国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 5 },
+  { id: '7', name: '征途国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 6 },
+  { id: '8', name: '凯旋娱乐', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 7 },
+  { id: '9', name: '超凡国际', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 8 },
+  { id: '10', name: '非凡娱乐', icon_url: 'https://ik.imagekit.io/avrxcbzni/123m%20(3).png', link: null, sort_order: 9 },
+];
+
 const defaultPageSettings: Record<string, string> = {
   my_sites_title: '我的网站',
   tools_header: '工具',
   home_header: '首页',
   games_header: '模拟器',
   share_header: '发布页',
+  announcement_modal_title: '重要公告',
+  announcement_modal_content: '',
+  announcement_card_content: '南宫旗下ww6.pw，24x.my，所有的平台充1000返688，达标请联系旺旺客服846983525，分享此网站给朋友截图找旺旺客服领18.88',
+  vpn_tab_content: 'VPN',
+  footer_title: '官方客服 · 精品游戏 · 全网最低！',
+  home_top_image_url: 'https://ik.imagekit.io/avrxcbzni/20260204_img_69824d158e725.jpg',
 };
 
 export function useAppContent(): { data: AppContent; loading: boolean } {
@@ -148,6 +169,7 @@ export function useAppContent(): { data: AppContent; loading: boolean } {
     games: defaultGames,
     toolSections: defaultToolSections,
     activities: defaultActivities,
+    adultItems: defaultAdultItems,
     bottomNav: defaultBottomNav,
     pageSettings: defaultPageSettings,
   });
@@ -164,7 +186,7 @@ export function useAppContent(): { data: AppContent; loading: boolean } {
 
     async function load() {
       try {
-        const [carouselRes, mySiteRes, gamesRes, sectionsRes, cardsRes, activitiesRes, navRes, settingsRes] =
+        const [carouselRes, mySiteRes, gamesRes, sectionsRes, cardsRes, activitiesRes, adultItemsRes, navRes, settingsRes] =
           await Promise.all([
             supabase.from('app_carousel').select('*').order('sort_order'),
             supabase.from('app_my_site_items').select('*').order('sort_order'),
@@ -172,6 +194,7 @@ export function useAppContent(): { data: AppContent; loading: boolean } {
             supabase.from('app_tool_sections').select('*').order('sort_order'),
             supabase.from('app_tool_cards').select('*').order('sort_order'),
             supabase.from('app_activities').select('*').order('sort_order'),
+            supabase.from('app_adult_items').select('*').order('sort_order'),
             supabase.from('app_bottom_nav').select('*').order('sort_order'),
             supabase.from('app_page_settings').select('key, value'),
           ]);
@@ -201,6 +224,7 @@ export function useAppContent(): { data: AppContent; loading: boolean } {
         }));
 
         const activities = (activitiesRes.data ?? []).length ? (activitiesRes.data as ActivityRow[]) : defaultActivities;
+        const adultItems = (adultItemsRes.data ?? []).length ? (adultItemsRes.data as AdultItemRow[]) : defaultAdultItems;
 
         const pageSettings = { ...defaultPageSettings };
         (settingsRes.data ?? []).forEach((row: { key: string; value: unknown }) => {
@@ -215,6 +239,7 @@ export function useAppContent(): { data: AppContent; loading: boolean } {
           games,
           toolSections: toolSections.length ? toolSections : defaultToolSections,
           activities,
+          adultItems,
           bottomNav,
           pageSettings,
         });
